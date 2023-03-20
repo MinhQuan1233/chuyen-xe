@@ -1,0 +1,211 @@
+package chuyenxe;
+import java.util.ArrayList;
+import java.util.Scanner;
+    
+/**
+ *
+ * @author thy12
+ */
+public class Chuyenxe {
+
+    /**
+     * @param args the command line arguments
+     */
+    private String Mscx, Hotentaixe, Soxe;
+    private double Doanhthu;
+    
+    /**
+     *
+     * @param Mscx
+     * @param Hotentaixe
+     * @param Soxe
+     * @param Doanhthu
+     */
+    public Chuyenxe( String Mscx, String Hotentaixe, String Soxe, double Doanhthu)
+    {
+        this.Mscx = Mscx;
+        this.Hotentaixe = Hotentaixe;
+        this.Soxe = Soxe;
+        this.Doanhthu = Doanhthu;
+    }
+public String getMscx(){
+    return Mscx;
+}
+public void setMscx(String Mscx){
+    this.Mscx = Mscx;
+}
+public String getHotentaixe(){
+    return Hotentaixe;
+}
+public void setHotentaixe(String Hotentaixe){
+    this.Hotentaixe = Hotentaixe;
+}
+public String getSoxe(){
+    return Soxe;
+}
+public void setSoxe(String Soxe)
+{
+    this.Soxe = Soxe;
+}
+public double getDoanhthu()
+{
+    return Doanhthu;
+}
+public void setDoanhthu(double Doanhthu)
+{
+    this.Doanhthu = Doanhthu;
+}
+
+public class Chuyenxenoithanh extends Chuyenxe
+{
+    private int Sotuyen;
+    private int Sokmdidc;
+        public Chuyenxenoithanh(String Mscx, String Hotentaixe, double Doanhthu, int sotuyen, int sokm) {
+            super(Mscx, Hotentaixe, Soxe, Doanhthu);
+            this.Sotuyen = Sotuyen;
+            this.Sokmdidc = Sokmdidc;
+        }    
+public int getSotuyen(){
+    return Sotuyen;
+}
+public void setSotuyen(int Sotuyen){
+    this.Sotuyen = Sotuyen;
+}
+public int getSokmdidc(){
+    return Sokmdidc;
+}
+public void setSokmdidc(int sokmdidc){
+    this.Sokmdidc = Sokmdidc;
+}
+@Override
+public String toString(){
+    return super.toString() + "Chuyenxenoithanh [Sotuyen=" + Sotuyen +     ", Sokmdidc=" + Sokmdidc + "]";
+}
+    }
+ public class Chuyenxengoaithanh extends Chuyenxe
+{
+    private int songaydidc;
+    private String noiden;
+        public Chuyenxengoaithanh(String Mscx, String Hotentaixe, double Doanhthu, int songaydidc1, String Soxe) {
+            super(Mscx, Hotentaixe, Soxe, Doanhthu);
+            this.noiden = noiden;
+            this.songaydidc = songaydidc;    
+        }
+ public int getsongaydidc(){
+    return songaydidc;
+}
+public void setsongaydidc(int songaydidc){
+    this.songaydidc = songaydidc;
+}
+public String getnoiden(){
+    return noiden;
+}
+public void setnoiden(String noiden){
+    this.noiden = noiden;
+}
+@Override
+public String toString(){
+    return super.toString()+ "Chuyenxengoaithanh [noiden=" + noiden +      ", songaydidc=" + songaydidc + "]";
+}
+
+ }
+
+ public class quanlychuyenxe{
+     Arraylist<Chuyenxe> listChuyenxe;
+     Scanner sc;
+     Chuyenxe cx;
+     int chon;
+    public quanlychuyenxe(){
+        super();
+        listChuyenxe = new Arraylist<Chuyenxe>();
+        sc = new Scanner(System.in);
+    }
+    public void nhap(int n)
+    {
+        for(int i = 0; i < n; i++)
+        {
+            System.out.println("1: chuyen xe noi thanh");
+            System.out.println("2: chuyen xe ngoai thanh");
+            System.out.println("0: thoat");
+            chon = sc.nextInt();sc.nextLine();
+            switch(chon){
+                case 1:
+                {
+                    String Mscx;
+                    String Hotentaixe;
+                    double doanhthu;
+                    int sotuyen;
+                    int sokm;
+                    System.out.println("Nhap ma so chuyen xe: "); Mscx = sc.nextLine();
+                    System.out.println("Ho ten tai xe: ");Hotentaixe = sc.nextLine();
+                    System.out.println("So tuyen: ");sotuyen = sc.nextInt();sc.nextLine();
+                    System.out.println("So km: ");sokm = sc.nextInt();sc.nextLine();
+                    System.out.println("Doanh thu: ");doanhthu =sc.nextDouble();sc.nextLine();
+                    cx  = new Chuyenxenoithanh(Mscx, Hotentaixe, doanhthu, sotuyen, sokm);
+                    listChuyenxe.add(cx);
+                    System.out.println("add thanh cong tuyen noi thanh");   
+                }
+                break;
+                
+                case 2:
+                {
+                    String Mscx;
+                    String Hotentaixe;
+                    double doanhthu;
+                    int songaydidc;
+                    String noiden;
+                    System.out.println("Nhap ma so chuyen xe: "); Mscx = sc.nextLine();
+                    System.out.println("Ho ten tai xe: ");Hotentaixe = sc.nextLine();
+                    System.out.println("So ngay di dc: ");songaydidc = sc.nextInt();sc.nextLine();
+                    System.out.println("Noi den: ");noiden = sc.nextLine();
+                    System.out.println("Doanh thu: ");doanhthu = sc.nextDouble();sc.nextLine();
+                    cx  = new Chuyenxengoaithanh(Mscx, Hotentaixe, doanhthu, songaydidc, noiden);
+                    listChuyenxe.add(cx);
+                    System.out.println("add thanh cong tuyen ngoa thanh");   
+                }
+                break;
+                
+                default:
+                
+                break;
+                    
+            }
+        }
+    }
+    public void xuat()
+    {
+        for(Chuyenxe : listChuyenxe)
+        {
+            System.out.println(cx.toString());
+        }
+    }
+    public void Tongdoanhthutungloai()
+    {
+        double doanhthunoithanh = 0, doanhthungoaithanh = 0;
+        for(Chuyenxe cx : listChuyenxe)
+        {
+            if(cx  instanceof Chuyenxenoithanh)
+            {
+                doanhthunoithanh+=cx.getDoanhthu();
+            }
+            if(cx  instanceof Chuyenxengoaithanh)
+            {
+                doanhthungoaithanh+=cx.getDoanhthu();
+            }
+            System.out.println("\nTong doanh thu tuyen noi thanh: " + doanhthunoithanh);
+            System.out.println("\nTong doanh thu tuyen ngoai thanh: " + doanhthungoaithanh);
+        }
+    }
+    public class test
+    {
+        public static void main(String[] args)
+        {
+            Quanlychuyenxe qlcx = new Quanlychuyenxe();
+            qlcx.nhap(3);
+            qlcx.xuat();
+            qlcx.Tongdoanhthutungloai;
+        }
+    }
+
+ 
+
